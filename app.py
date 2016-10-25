@@ -1,12 +1,16 @@
 import os
+import re
 from flask import Flask, render_template, redirect, request, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from sqlalchemy import Column, Integer, Text
-import re
-import query
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ggadmin:admin@localhost/glibglab"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+from models import User
 
 @app.route('/')
 def index():
@@ -35,4 +39,6 @@ def teacher():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
-    
+
+if __name__ == '__main__':
+    app.run()
