@@ -22,8 +22,10 @@ Last change	: 2015/03/27
 html,
 body {
   background: #efefef;
+  background: #9E3E45;
   padding: 10px;
   font-family: 'Varela Round';
+
 }
 /*=== 2. Anchor Link ===*/
 a {

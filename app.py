@@ -12,7 +12,11 @@ db = SQLAlchemy(app)
 
 from models import User
 
-@app.route('/', methods=['GET', 'POST'])
+api_manager = APIManager(app, flask_sqlalchemy_db=db)
+api_manager.create_api(User, methods=['GET', 'POST', 'DELETE', 'PUT'])
+
+
+@app.route('/')
 def index():
     return render_template('index.html')
     
