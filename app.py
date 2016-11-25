@@ -37,11 +37,43 @@ def signup():
             if _password == _password_confirm:
                 if _agree == ['agree1']:
                     new_user = User(_username, _password, _email, _fullname, _soi)
+                    db.session.add(new_user)
+                    db.session.commit()
+                    session['username'] = _username
+                    session['password'] = _password
+                    session['email'] = _email
+                    session['soi'] = _soi
+                    if session['soi'] == ['option1']:
+                        return redirect(url_for('classview'))
+                    else:
+                        return redirect(url_for('teacher'))
+                else:
+                    error = "Must agree with terms."
+                    return render_template('signup.html', error=error)
+            else:
+                error = "Passwords do not match."
+                return render_template('signup.html', error=error)
+        else:
+            error = "Username is already taken."
+            return render_template('signup.html', error=error)
     return render_template('signup.html', error=error)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    if request.method == 'POST':
+        if User.query.filter(User.username == request.form['username'], 
+                             User.password == request.form['password']).count():
+            soi = User.query.filter(User.username == request.form['username']).first()
+            session['username'] = request.form['username']
+            session['password'] = request.form['password']
+            session['soi'] = soi
+            if session['soi'] == ['option1']:
+                return redirect(url_for('classview'))
+            else:
+                return redirect(url_for('teacher'))
+        else:
+            error = "Invalid credentials. Please try again."
     return render_template('login.html', error=error)
 
 @app.route('/reset')
@@ -61,7 +93,10 @@ def classview():
     
 @app.route('/logout')
 def logout():
+    session.pop('username', None)
     return redirect(url_for('index'))
 
+app.debug = True
+app.secret_key = '\xd6;\xcc\xd8N\xf0\x11\x89k\x08\n~Eu\x01\x9c\x86\xc3\xae\x89 \xfa\x9a\x04'
 if __name__ == '__main__':
     app.run()
