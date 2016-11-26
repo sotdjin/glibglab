@@ -76,9 +76,12 @@ def login():
             error = "Invalid credentials. Please try again."
     return render_template('login.html', error=error)
 
-@app.route('/reset')
+@app.route('/reset', methods=['GET', 'POST'])
 def reset():
     error = None
+    if request.method == 'POST':
+        if User.query.filter(User.email == request.form['email']).count():
+            
     return render_template('forgotpassword.html', error=error)
 
 @app.route('/teacher')
