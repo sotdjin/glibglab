@@ -64,7 +64,8 @@ def login():
     if request.method == 'POST':
         if User.query.filter(User.username == request.form['username'], 
                              User.password == request.form['password']).count():
-            soi = User.query.filter(User.username == request.form['username']).first()
+            found_user = User.query.filter(User.username == request.form['username']).first()
+            soi = found_user.soi
             session['username'] = request.form['username']
             session['password'] = request.form['password']
             session['soi'] = soi
@@ -81,7 +82,13 @@ def reset():
     error = None
     if request.method == 'POST':
         if User.query.filter(User.email == request.form['email']).count():
-            
+            found_user = User.query.filter(User.email == request.form['email']).first()
+            email_to_send_to = found_user.email
+            #SEND EMAIL (somehow) TO USER WITH THAT EMAIL
+            #forgotten_email(email_to_send_to)
+            return redirect(url_for('index'))
+        else:
+            error = "User with that email doesn't exist"
     return render_template('forgotpassword.html', error=error)
 
 @app.route('/teacher')
