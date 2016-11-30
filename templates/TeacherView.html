@@ -130,7 +130,11 @@
 
     <!-- Menu Toggle Script -->
 <script>
-
+    $(document).ready(function() {
+        {% for course in current_courses %}
+            addDBClass('{{ course.course_name }}');
+        {% endfor %} 
+    });
     
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -138,7 +142,7 @@
     });
     
     
-    function addDBClasse(className) {
+    function addDBClass(className) {
         var node = document.createElement("div");
         node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + className + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + className + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
         $("#class_list").append(node);
