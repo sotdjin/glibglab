@@ -67,9 +67,11 @@
 				<p>new user? <a href="{{ url_for('signup') }}">create new account</a></p>
 			</div>
 		</form>
-			{% if error %}
-        	    <p class="error"><strong>Error:</strong> {{ error }}
-          	{% endif %}
+		<div style="text-align:center">
+            {% if error %}
+            	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+            {% endif %}
+        </div>
 	</div>
 	<!-- end:Main Form -->
 </div>

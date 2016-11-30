@@ -106,11 +106,11 @@
 				<p>already have an account? <a href="{{ url_for('login') }}">login here</a></p>
 			</div>
 		</form>
-		<div class = "error">
-		{% if error %}
-        	<p class="error"><strong>Error:</strong> {{ error }}
-      	{% endif %}
-      	</div>
+		<div style="text-align:center">
+            {% if error %}
+            	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+            {% endif %}
+        </div>
 	</div>
 	<!-- end:Main Form -->
 </div>

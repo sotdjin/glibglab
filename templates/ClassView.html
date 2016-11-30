@@ -49,19 +49,20 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
-	{% if error %}
-    	<p class="error"><strong>Error:</strong> {{ error }}
-  	{% endif %}
         <!-- Page Content -->
 <div id="page-content-wrapper">
 <div class="container-fluid">
-            
+
+<div style="text-align:center">
+    {% if error %}
+    	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+    {% endif %}
+</div>
 
 <div class="row">
     <div class="col-xs-12">
