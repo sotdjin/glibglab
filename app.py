@@ -48,7 +48,7 @@ def signup():
                         new_user = User(_username, _password, _email, _fullname, _soi)
                         db.session.add(new_user)
                         db.session.commit()
-                        return redirect(url_for('classview'))
+                        return redirect(url_for('student'))
                     elif session['soi'] == 'option2':
                         new_user = User(_username, _password, _email, _fullname, _soi)
                         db.session.add(new_user)
@@ -82,7 +82,7 @@ def login():
             session['soi'] = soi
             session['name'] = fullname
             if session['soi'] == 'option1':
-                return redirect(url_for('classview'))
+                return redirect(url_for('student'))
             else:
                 return redirect(url_for('teacher'))
         else:
@@ -107,7 +107,6 @@ def reset():
 def teacher():
     error = None
     current_courses = Course.query.filter(Course.course_instructor == session['username']).all()
-    sizeof = len(current_courses)
     if request.method == 'POST':
         _coursename = request.form['course_name']
         _courseinstructor = session['username']
@@ -117,7 +116,19 @@ def teacher():
             new_course = Course(_courseinstructor, _instructorname, _coursename)
             db.session.add(new_course)
             db.session.commit()
+            current_courses = Course.query.filter(Course.course_instructor == session['username']).all()
     return render_template('TeacherView.html', error=error, current_courses=current_courses)
+
+@app.route('/teacherfeed', methods=['GET', 'POST'])
+def teacherfeed():
+    error = None
+    return render_template('TeacherFeed.html', error=error)
+    
+@app.route('/student', methods=['GET', 'POST'])
+def student():
+    error = None
+    current_courses = Course.query.all()
+    return render_template('StudentView.html', error=error, current_courses=current_courses)
 
 @app.route('/questions', methods=['GET', 'POST'])
 def notesview():
