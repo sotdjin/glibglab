@@ -71,15 +71,15 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
-    soi = 0
     if request.method == 'POST':
-        if User.query.filter(User.username == request.form['username'], 
-                             User.password == request.form['password']).count():
-            found_user = User.query.filter(User.username == request.form['username']).first()
+        if User.query.filter(User.username == request.form['lg_username'], 
+                             User.password == request.form['lg_password']).count():
+            found_user = User.query.filter(User.username == request.form['lg_username']).first()
             soi = found_user.soi
-            session['username'] = request.form['username']
-            session['password'] = request.form['password']
+            session['username'] = request.form['lg_username']
+            session['password'] = request.form['lg_password']
             session['soi'] = soi
+            print session['soi']
             if session['soi'] == 'option1':
                 return redirect(url_for('classview'))
             else:
@@ -92,8 +92,8 @@ def login():
 def reset():
     error = None
     if request.method == 'POST':
-        if User.query.filter(User.email == request.form['email']).count():
-            found_user = User.query.filter(User.email == request.form['email']).first()
+        if User.query.filter(User.email == request.form['fp_email']).count():
+            found_user = User.query.filter(User.email == request.form['fp_email']).first()
             email_to_send_to = found_user.email
             #SEND EMAIL (somehow) TO USER WITH THAT EMAIL
             #forgotten_email(email_to_send_to)
