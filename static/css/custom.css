@@ -13,7 +13,7 @@
     max-width: 250px;
 }
 
-body{background-color: blue;}
+
 
 .outlinebtn:hover {
     color: #ffffff;
@@ -27,6 +27,27 @@ ul {
     margin-top: 20px;
     padding: 0;
 } 
+
+
+.bg {
+  background: url('../images/background.jpg') no-repeat center center;
+  position: fixed;
+  width: 100%;
+  height: 350px; /*same height as jumbotron */
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+
+.lower {margin: 40% 0 0 0;}
+
+.jumbotron {
+background-image: url("../img/jumbotron_bg.jpg");
+background-size: cover;}
+
+
+body{  background-color: #333;}
 
 li a {
     display: block;

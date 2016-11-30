@@ -27,12 +27,16 @@
 </head>
 
 <body>
-    <div class="background-image"></div>
+    <div class="bg"></div>
+<div class="jumbotron">
+</div>
+  
     <div id="wrapper">
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                <div class = "lower">
                     <!--<center><img alt="GlibGlab" src="images/logowhite.png" style="width: 50%;"></img>-->
                     <center><img class="logo-white" src="../static/images/logowhite.png" alt="GlibGlab"></img>
                         <ul>
@@ -40,6 +44,7 @@
                             <li><a href="signup" class="outlinebtn" id="signup">Sign Up</a></li>
                         </ul>
                     </center>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,6 +61,19 @@
 
     <!-- Menu Toggle Script -->
     <script>
+
+var jumboHeight = $('.jumbotron').outerHeight();
+function parallax(){
+    var scrolled = $(window).scrollTop();
+    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
+
+$(window).scroll(function(e){
+    parallax();
+});
+
+    
+    
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
