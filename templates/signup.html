@@ -73,12 +73,14 @@
 						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" value="{{ request.form.reg_fullname }}">
 					</div>
 					
-					<div class="form-group login-group-checkbox">
-						<input type="radio" class="" name="reg_gender" id="male" placeholder="type" value="option1">
-						<label for="student">student</label></input>
-						
-						<input type="radio" class="" name="reg_gender" id="female" placeholder="type" value="option2">
-						<label for="instructor">instructor</label></input>
+					<div class="btn-group">
+					  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Select
+					  </button>
+					  <div class="dropdown-menu">
+					    <a class="dropdown-item" href="#">Student</a></br>
+					    <a class="dropdown-item" href="#">Teacher</a>
+					</div>
 					</div>
 					
 					<div class="form-group login-group-checkbox">
