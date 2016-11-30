@@ -21,24 +21,27 @@ Last change	: 2015/03/27
 /*=== 1. General Structure ===*/
 html,
 body {
-  background: #efefef;
-  background: #9E3E45;
+
+background: linear-gradient( black,#3273db);
   padding: 10px;
   font-family: 'Varela Round';
 
+
+
 }
+.error{color: white; }
 /*=== 2. Anchor Link ===*/
 a {
-  color: #aaaaaa;
+  color: #000;
   transition: all ease-in-out 200ms;
 }
 a:hover {
-  color: #333333;
+  color: white;
   text-decoration: none;
 }
 /*=== 3. Text Outside the Box ===*/
 .etc-login-form {
-  color: #919191;
+  color: white;
   padding: 10px 20px;
 }
 .etc-login-form p {
@@ -58,18 +61,18 @@ a:hover {
   box-shadow: 0 0 0;
   border-radius: 0;
   background: transparent;
-  color: #555555;
+  color: #272c33;
   padding: 7px 0;
   font-weight: bold;
   height:auto;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
-  color: #999999;
+  color: #272c33;
 }
 .login-form-1 .form-control:-moz-placeholder,
 .login-form-1 .form-control::-moz-placeholder,
 .login-form-1 .form-control:-ms-input-placeholder {
-  color: #999999;
+  color: #272c33;
 }
 .login-form-1 .form-group {
   margin-bottom: 0;
@@ -82,7 +85,7 @@ a:hover {
 }
 .login-group {
   background: #ffffff;
-  color: #999999;
+  color: #272c33;
   border-radius: 8px;
   padding: 10px 20px;
 }
@@ -95,7 +98,7 @@ a:hover {
   right: -25px;
   top: 50%;
   background: #ffffff;
-  color: #999999;
+  color: #272c33;
   padding: 11px 0;
   width: 50px;
   height: 50px;
@@ -284,6 +287,6 @@ label:hover:before {
 .logo {
   padding: 15px 0;
   font-size: 25px;
-  color: #aaaaaa;
+  color: white;
   font-weight: bold;
 }
