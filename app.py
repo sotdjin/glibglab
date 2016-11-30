@@ -34,7 +34,7 @@ def signup():
         _password_confirm = request.form['reg_password_confirm']
         _email = request.form['reg_email']
         _fullname = request.form['reg_fullname']
-        _soi = request.form.get('reg_gender', None)
+        _soi = request.form.get('userType', None)
         print _soi
         _agree = request.form.get('reg_agree', 'agree2')
         if db.session.query(User).filter(User.username == _username).scalar() is None:
@@ -80,7 +80,7 @@ def login():
             session['username'] = request.form['username']
             session['password'] = request.form['password']
             session['soi'] = soi
-            if session['soi'] == ['option1']:
+            if session['soi'] == 'option1':
                 return redirect(url_for('classview'))
             else:
                 return redirect(url_for('teacher'))

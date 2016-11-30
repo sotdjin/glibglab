@@ -39,3 +39,9 @@ class Question(db.Model):
     
     def __repr__(self):
         return '<Question %r>' % self.id
+
+class Classes(db.Model):
+    __tablename__ = 'classes'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    classes
