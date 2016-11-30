@@ -39,3 +39,6 @@ class Question(db.Model):
     
     def __repr__(self):
         return '<Question %r>' % self.id
+
+class Classes(db.Model):
+    __tablename__ = 'classes'

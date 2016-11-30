@@ -87,13 +87,13 @@
 						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" value="{{ request.form.reg_fullname }}">
 					</div>
 					
-					<div class="form-group login-group-checkbox">
-						<input type="radio" class="" name="reg_gender" id="male" placeholder="type" value="option1">
-						<label for="student">student</label>
-						
-						<input type="radio" class="" name="reg_gender" id="female" placeholder="type" value="option2">
-						<label for="instructor">instructor</label>
-					</div>
+					<div class="form-group">
+                        <input type="radio" name="userType" id="student" value="option1">
+                        <label for="student">student</label>
+
+                        <input type="radio" name="userType" id="instructor" value="option2">
+                        <label for="instructor">instructor</label>
+                    </div>
 					
 					<div class="form-group login-group-checkbox">
 						<input type="checkbox" class="" id="reg_agree" name="reg_agree" value="agree1">
