@@ -50,7 +50,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
+                <li><a href="#" onClick="viewClass('bgg')">Page 1</a></li>
                 <li><a href="#">Page 2</a></li> 
                 <li><a href="#">Page 3</a></li> 
             </ul>
@@ -64,10 +64,37 @@
 
         <!-- Page Content -->
 <div id="page-content-wrapper">
-<div class="container-fluid">
-            	{% if error %}
-            	<p class="error"><strong>Error:</strong> {{ error }}
-              	{% endif %}
+    	{% if error %}
+        	<p class="error"><strong>Error:</strong> {{ error }}
+      	{% endif %}
+<!--
+<div class="container-fluid" id="question-view">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="question-container">
+            wat
+        </div>
+    </div>
+</div>
+</div>-->
+    
+    
+    
+    
+<div class="container-fluid" id="class-view">
+    
+<div class="row">
+    <div class="col-xs-12">
+        <center>
+        <div class="form-group">
+            <label for="comment"><H2>Ask A Question</H2></label>
+            <textarea class="form-control" rows="5" id="newQuestion"></textarea>
+        </div>
+                <button type="button" class="btn btn-secondary" onClick="addQuestion()">Ask Question...</button>
+
+        </center>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12">
@@ -80,11 +107,11 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel"><center>Create New Class</center></h4>
+                            <h4 class="modal-title" id="myModalLabel"><center>Ask Question</center></h4>
                         </div>
                         
                         <div class="modal-body">
-                            <form>
+                            <!--<form>
                                 <div class="form-group">
                                     <label for="add-class-name" class="form-control-label">Class:</label>
                                     <input type="text" class="form-control" id="add-class-name">
@@ -105,9 +132,11 @@
                                         <div class="form-color color7" id="color7" onClick="setColor('color7')" onfocus="setColor('color7')" tabindex="0"></div>
                                         <div class="form-color color8" id="color8" onClick="setColor('color8')" onfocus="setColor('color8')" tabindex="0"></div>
                                     </div>
-                                    <!--<input type="text" class="form-control" id="add-class-color">-->
+                                    <!--<input type="text" class="form-control" id="add-class-color">
                                 </div>
-                            </form>
+                            </form>-->
+                            
+                            
                         </div>
                         
                         <div class="modal-footer">
@@ -116,7 +145,7 @@
                             </div>
                             <div class="form-right-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success" onclick="addClass()">Add Class</button>
+                                <button type="button" class="btn btn-success" onclick="addClass()">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -131,18 +160,12 @@
 <div class="row">
         <!--<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add Class...</button>-->
     <div class="col-xs-12">
-        <div class="container-fluid" id="class_list">
+        <div class="container-fluid" id="question_list">
             
         </div>
     </div>
 </div> 
-<div class="row">
-   <div class="col-xs-12"></div>
-    <!-- <div class="col-xs-3">-->
-        <button type="button" class="btn btn-secondary new-class-button" data-toggle="modal" data-target="#myModal" style="">Add Class...</button>
-        
-   <!-- </div>-->
-</div>
+
 
 </div>  <!-- End container-fluid -->
 </div>  <!-- End page-content-wrapper -->
@@ -184,6 +207,19 @@
 
     }
     
+    function addQuestion(){
+        var node = document.createElement("div");
+        var newQuestion = document.getElementById('newQuestion').value;
+        console.log(newQuestion);
+        
+        
+        
+        
+        
+        
+        
+    }
+    
     function addClass() {
         var node = document.createElement("div");
         console.log(newClassColor);
@@ -197,14 +233,25 @@
             $('#myModal').modal('hide');
             console.log(newClassColor);
             node.style.backgroundColor = newClassColor;
-            node.innerHTML = "<div class='class-info'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div>";
-            //node.innerHTML = "<div class='panel panel-default' style='background-color: " + newClassColor + "'><div class='class-info'>" + newClass + "<br>" + newInstructor + "</div></div>";
-            //node.innerHTML = "<div class='class-container' style='background-color: " + newClassColor + "'><div class='class-info'>" + newClass + "<br>" + newInstructor + "</div></div>" ;
-            //node.innerHTML = "<div class='well well-l'><div style='background: #f33f5d'>" + newClass + "<br>" + newInstructor + "</div></div>";
-            //node.className = newClass + "_data";    
+            node.innerHTML = "<div class='class-info' onClick=viewClass('" + newClass + "')><div class='class-name'><p style='font-size:32px'>" + newClass + "</p></div><div class='class-notes'><p style='font-size:20px'>" + newInstructor + "</p></div></div>";
+            
             $("#class_list").append(node);
         }
-    }   
+    }
+    
+    function viewClass(className) {
+
+        var classView = document.getElementById('class-view');      //get list of classes
+        classView.style.visibility = 'hidden';                      //hide them
+        
+        var newQuestion = document.createElement("div");
+        
+        var classNotes = document.getElementById(className);        //
+        var newClassColor = window.getComputedStyle(colorButton, null).getPropertyValue("background-color");
+        console.log(newClassColor);
+
+    }    
+    
 
 
 </script>

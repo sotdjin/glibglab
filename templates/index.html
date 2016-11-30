@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
@@ -9,14 +10,12 @@
     <meta name="author" content="">
 
     <title>GlibGlab</title>
-    
-    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
-    
+
     <!-- Bootstrap Core CSS -->
-    <link href="../static/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/js/bootstrap/dist/js/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="../static/css/custom.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,9 +23,33 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
+</head>
+
+<body>
+    <div class="background-image"></div>
+    <div id="wrapper">
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                    <!--<center><img alt="GlibGlab" src="images/logowhite.png" style="width: 50%;"></img>-->
+                    <center><img class="logo-white" src="../static/images/logowhite.png" alt="GlibGlab"></img>
+                        <ul>
+                            <li><a href="login" class="outlinebtn" id="login">Sign In</a></li>
+                            <li><a href="signup" class="outlinebtn" id="signup">Sign Up</a></li>
+                        </ul>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
     <!-- jQuery -->
-    <script src="../static/js/jquery/dist/jquery.min.js"></script>
+    <script src="../static/js/jquery/dist/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../static/js/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -38,30 +61,6 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-</head>
-
-<body style="background-image:url(images/background.jpg)">
-
-    <div id="wrapper">
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <center><img alt="GlibGlab" src="images/logowhite.png" width="500"></img></center>
-                        <center>
-                        <a href="login" class="btn btn-default" id="login">Sign In</a><br>
-                        <a href="signup" class="btn btn-default" id="signup">Sign Up</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
 
 </body>
 

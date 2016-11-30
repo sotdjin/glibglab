@@ -1,4 +1,9 @@
 
+.new-class-button {
+	position: absolute;
+	right: 10%;
+}
+
 .student-class-div {
 	width: 100px;
 	height: 20px;
@@ -6,4 +11,123 @@
 	top: 20px;
 	left: 20px;
 	background-color: #33ff33;
+}
+
+.class-notes {
+	width: 30%;
+	height: 100%;
+	float: right;
+}
+
+.class-name {
+	float: left;
+	width: 70%;
+	height: 100%;
+}
+
+.class-info {
+    width: 70%;
+    height: 90px;
+    border-radius: 5px;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(225,225,225,.9);/*#e1e1e1;*/
+    position: relative;
+}
+
+.class-container {
+	width: 100%;
+	height: 100px;
+	margin: 10px 0px;
+	border-radius: 8px;
+
+}
+
+.form-colors {
+	margin-bottom: 30px;
+	width: 100%;
+	height: 60px;
+}
+
+.form-colors-selection {
+	width: 100%;
+	height: 100%;
+}
+
+.form-color {
+	margin: 0px 1% 0px 1%;
+	float: left;
+	border-style: solid;
+	border-radius: 25px;
+	border-color: #333333;
+	border-width: 1px;
+	width: 10%;
+	height: 100%;
+}
+
+.form-color:focus {
+	outline: none;
+	border-color: #EEEEEE !important;
+	border-radius: 0px !important;
+	border-width: 3px !important;
+}
+
+.form-color:hover {
+	border-width: 3px !important;
+}
+
+.form-color:pressed {
+	border-radius: 0px;
+	border-color: #000000;
+	border-width: 2px;
+	width: 14%;
+}
+
+.color1 {
+	background-color: #9932CC;
+}
+
+.color2 {
+	background-color: #66AAFF;
+}
+
+.color3 {
+	background-color: #EE9511;
+}
+
+.color4 {
+	background-color: #30A030;
+}
+
+.color5 {
+	background-color: #EE0044;
+}
+
+.color6 {
+	background-color: #A17762;
+}
+
+.color7 {
+	background-color: #8C1717;
+}
+
+.color8 {
+	background-color: #14DAAB;
+}
+
+.form-left-footer {
+	height: 34px;
+	float: left;
+	width: 40%;
+}
+
+.form-right-footer {
+	float: right;
+	width: 60%;
+}
+
+.question-container {
+	visibility: collapse;
+	width: 100%;
+	height: 500px;
 }
