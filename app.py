@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import json
 from flask import Flask, render_template, redirect, request, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
@@ -106,15 +107,17 @@ def reset():
 def teacher():
     error = None
     current_courses = Course.query.filter(Course.course_instructor == session['username']).all()
+    sizeof = len(current_courses)
     if request.method == 'POST':
         _coursename = request.form['course_name']
-        _courseinstructor = request.form['course_instructor']
-        _instructorname = User.query.filter(_courseinstructor)
+        _courseinstructor = session['username']
+        found_user = User.query.filter(User.username == _courseinstructor).first()
+        _instructorname = found_user.name
         if (Course.query.filter(Course.course_name == _coursename, Course.course_instructor == _courseinstructor).count()) == 0:
-            new_course = Course(_courseinstructor.lower(), _coursename.lower())
+            new_course = Course(_courseinstructor, _instructorname, _coursename)
             db.session.add(new_course)
             db.session.commit()
-    return render_template('TeacherView.html', error=error)
+    return render_template('TeacherView.html', error=error, current_courses=current_courses)
 
 @app.route('/questions', methods=['GET', 'POST'])
 def notesview():
