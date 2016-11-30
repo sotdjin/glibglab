@@ -42,3 +42,6 @@ class Question(db.Model):
 
 class Classes(db.Model):
     __tablename__ = 'classes'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    classes
