@@ -85,10 +85,7 @@
                                     <label for="add-class-name" class="form-control-label">Class:</label>
                                     <input type="text" name="course_name" class="form-control" id="add-class-name" value="{{ request.form.course_name }}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="add-class-instructor" class="form-control-label">Instructor:</label>
-                                    <input type="text" name="course_instructor" class="form-control" id="add-class-instructor" value="{{ request.form.course_instructor }}">
-                                </div>
+                                
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -146,29 +143,26 @@
         var node = document.createElement("div");
 
         var newClass = document.getElementById('add-class-name').value;
-        var newInstructor = document.getElementById('add-class-instructor').value;
+        
         
 
-        if (newInstructor != "" && newClass != "") {
+        if (newClass != "") {
             node.className = "class-container";
             $('#myModal').modal('hide');
 
-            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
+            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
   
             $("#class_list").append(node);
         }
     }   
     
-    function loadQuestionView(newClass, newInstructor) {
+    function loadQuestionView(newClass) {
         
         console.log(newClass);
-        console.log(newInstructor);
 
         localStorage.setItem('ClassName', newClass);
-        localStorage.setItem('InstructorName', newInstructor);
-
         
-        //window.location.href = "NotesView.html";
+        window.location.href = "TeacherFeed.html";
         
     }
 

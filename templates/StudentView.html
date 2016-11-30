@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Instructor Questions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="../static/js/jquery/dist/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Our CSS -->
+    <link href="../static/css/content.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body style="background-color:#161616">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-brand" href="#"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{{ url_for('logout') }}">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+        <!-- Page Content -->
+<div id="page-content-wrapper">
+<div class="container-fluid">
+<div style="text-align:center">
+    {% if error %}
+    	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+    {% endif %}
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="container-fluid" id="class_list" style="text-align:center;">
+            
+        </div>
+    </div>
+</div> 
+
+   
+<div class="row">
+    <div class="col-xs-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Instructors
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="instructorDropdown">
+            <li role="presentation"><a role="menuitem" href="#">DickButt Moore</a></li>
+            <li role="presentation"><a role="menuitem" href="#">DickButt Cassandra</a></li>
+            <li role="presentation"><a role="menuitem" href="#">DickButt Braden</a></li>
+            <li role="presentation"><a role="menuitem" href="#">The DickButt</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Classes
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" href="#">CSCE 436</a></li>
+            <li role="presentation"><a role="menuitem" href="#">CSCE 443</a></li>
+            <li role="presentation"><a role="menuitem" href="#">CSCE 435</a></li>
+            <li role="presentation"><a role="menuitem" href="#">ANTH 205</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>  <!-- End container-fluid -->
+</div>  <!-- End page-content-wrapper -->
+
+
+<script>
+
+    function addClass() {
+        var node = document.createElement("div");
+
+        var newClass = document.getElementById('add-class-name').value;
+        var newInstructor = document.getElementById('add-class-instructor').value;
+        
+
+        if (newInstructor != "" && newClass != "") {
+            node.className = "class-container";
+            $('#myModal').modal('hide');
+
+            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
+  
+            $("#class_list").append(node);
+        }
+    }   
+    
+    function loadQuestionView(newClass, newInstructor) {
+        
+        console.log(newClass);
+        console.log(newInstructor);
+
+        localStorage.setItem('ClassName', newClass);
+        localStorage.setItem('InstructorName', newInstructor);
+
+        
+        window.location.href = "TeacherFeed.html";
+        
+    }
+
+
+</script>
+
+</body>
+
+</html>
