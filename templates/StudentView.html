@@ -117,7 +117,14 @@
          newOption.innerHTML = className;
          $("#class-list").append(newOption);
     }
+    function addDBClass(newClass, newInstructor) {
+        var node = document.createElement("div");
+        node.className = "class-container";
 
+        node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
+        $("#class_list").append(node);
+    }
+    
     function addClass() {
         var node = document.createElement("div");
 
@@ -127,7 +134,6 @@
 
         if (newInstructor != "" && newClass != "") {
             node.className = "class-container";
-            $('#myModal').modal('hide');
 
             node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
   
