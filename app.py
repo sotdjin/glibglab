@@ -35,7 +35,6 @@ def signup():
         _email = request.form['reg_email']
         _fullname = request.form['reg_fullname']
         _soi = request.form.get('userType', None)
-        print _soi
         _agree = request.form.get('reg_agree', 'agree2')
         if db.session.query(User).filter(User.username == _username).scalar() is None:
             if _password == _password_confirm:
@@ -79,7 +78,6 @@ def login():
             session['username'] = request.form['lg_username']
             session['password'] = request.form['lg_password']
             session['soi'] = soi
-            print session['soi']
             if session['soi'] == 'option1':
                 return redirect(url_for('classview'))
             else:
@@ -102,12 +100,18 @@ def reset():
             error = "User with that email doesn't exist"
     return render_template('forgotpassword.html', error=error)
 
-@app.route('/teacher')
+@app.route('/teacher', methods=['GET', 'POST'])
 def teacher():
     error = None
+    if request.method == 'POST':
+        _coursename = request.form['course_name']
+        _courseinstructor = request.form['course_instructor']
+        _coursecolor = request.form.get('colors', None)
+        print _coursename
+        print _courseinstructor
     return render_template('TeacherView.html', error=error)
 
-@app.route('/notes')
+@app.route('/notes', methods=['GET', 'POST'])
 def notesview():
     error = None
     return render_template('NotesView.html', error=error)
