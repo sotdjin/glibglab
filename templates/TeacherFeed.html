@@ -45,7 +45,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </button>
-            <a class="navbar-brand" href="#"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
+            <a class="navbar-brand" href="{{ url_for('index') }}"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -88,20 +88,18 @@
 </div>  <!-- End page-content-wrapper -->
         
 <script>
-    var numQuestion = 0;
-    var timeInterval = Math.random() * 10000 + 5000;
-    
-    setInterval(
-    function(){ addQuestion("what") },
-    timeInterval
-    );
+    $(document).ready(function() {
+        {% for question in questions %}
+            addQuestion('{{ question.question }}');
+        {% endfor %} 
+    });
     
     function addQuestion(text) {
         var question = document.createElement("div");
         //var newQuestion = document.getElementById('newQuestion').value;
         question.className = "student-question-div";
 		
-		question.innerHTML = "DICKBUTT";
+		/*question.innerHTML = "DICKBUTT";
         if(numQuestion==0){
             question.innerHTML = "What is the meaning of the word hypothermia?";
         }
@@ -116,12 +114,10 @@
         }
          if(numQuestion==4){
             question.innerHTML = "Why don't half of the students have test grades yet?";
-        }
+        }*/
         
-        
+        question.innerHTML = text
         $("#question_list").prepend(question);
-        timeInterval = Math.random() * 10000 + 5000;
-        numQuestion++;
     }
 
 

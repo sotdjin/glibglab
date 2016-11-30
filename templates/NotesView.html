@@ -45,7 +45,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </button>
-            <a class="navbar-brand" href="#"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
+            <a class="navbar-brand" href="{{ url_for('index') }}"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -69,16 +69,18 @@
 <div class="row">
     <div class="col-xs-12">
         <center>
+        <form method="post" action="/questions" role="form" id="form1">
         <div class="form-group">
             <label for="comment"><H2><font color="white"> Ask A Question </font></H2></label>
-            <textarea class="form-control" rows="5" id="newQuestion"></textarea>
+            <textarea class="form-control" rows="5" id="newQuestion" name="question"></textarea>
         </div>
-                <button type="button" class="btn btn-secondary" onClick="addQuestion()">Ask Question...</button>
+        </form>
+                <button type="submit" class="btn btn-secondary" onClick="addQuestion()" form="form1">Ask Question...</button>
 
         </center>
     </div>
 </div>
-
+<form method="post"> </form>
 
 <div class="row">
     <div class="col-xs-12">
@@ -92,10 +94,22 @@
 </div>  <!-- End page-content-wrapper -->
         
 <script>
-
+    $(document).ready(function() {
+        addDBQuestion('{{ current_questions.question }}');
+    });
+    
     function addQuestion(){
         var question = document.createElement("div");
         var newQuestion = document.getElementById('newQuestion').value;
+        question.className = "student-question-div";
+		
+		question.innerHTML = newQuestion;
+        
+        $("#question_list").prepend(question);
+    }
+    
+    function addDBQuestion(newQuestion){
+        var question = document.createElement("div");
         question.className = "student-question-div";
 		
 		question.innerHTML = newQuestion;

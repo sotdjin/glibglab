@@ -122,6 +122,10 @@ def teacher():
 @app.route('/teacherfeed', methods=['GET', 'POST'])
 def teacherfeed():
     error = None
+    questions = Question.query.filter(Question.question_instructor == session['username']).all()
+    x = len(questions)
+    if x >= 1:
+        return render_template('TeacherFeed.html', error=error, questions=questions) 
     return render_template('TeacherFeed.html', error=error)
     
 @app.route('/student', methods=['GET', 'POST'])
@@ -133,7 +137,15 @@ def student():
 @app.route('/questions', methods=['GET', 'POST'])
 def notesview():
     error = None
-    return render_template('NotesView.html', error=error)
+    current_questions = Question.query.filter(Question.question_owner == session['username']).first()
+    if request.method == 'POST':
+        _question = request.form.get('question', None)
+        if _question != None:
+            new_question = Question(session['username'], 'testinstructor', _question, False)
+            db.session.add(new_question)
+            db.session.commit()
+            current_questions = new_question
+    return render_template('NotesView.html', error=error, current_questions=current_questions)
     
 @app.route('/logout')
 def logout():
