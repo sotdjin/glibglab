@@ -71,6 +71,9 @@
 				<p>new user? <a href="signup.html">create new account</a></p>
 			</div>
 		</form>
+			{% if error %}
+        	<p class="error"><strong>Error:</strong> {{ error }}
+          	{% endif %}
 	</div>
 	<!-- end:Main Form -->
 </div>

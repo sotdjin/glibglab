@@ -64,6 +64,9 @@
 
         <!-- Page Content -->
 <div id="page-content-wrapper">
+    	{% if error %}
+        	<p class="error"><strong>Error:</strong> {{ error }}
+      	{% endif %}
 <!--
 <div class="container-fluid" id="question-view">
 <div class="row">
