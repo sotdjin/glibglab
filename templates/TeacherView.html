@@ -138,18 +138,20 @@
     });
     
     
+    function addDBClasse(className) {
+        var node = document.createElement("div");
+        node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + className + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + className + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
+        $("#class_list").append(node);
+    }
+
     function addClass() {
         var node = document.createElement("div");
-
         var newClass = document.getElementById('add-class-name').value;
-        
-        
-
         if (newClass != "") {
             node.className = "class-container";
             $('#myModal').modal('hide');
 
-            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor  + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
+            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
   
             $("#class_list").append(node);
         }
