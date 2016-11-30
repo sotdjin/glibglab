@@ -144,6 +144,7 @@
     
     function addDBClass(className) {
         var node = document.createElement("div");
+        node.className = "class-container";
         node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + className + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + className + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";
         $("#class_list").append(node);
     }
