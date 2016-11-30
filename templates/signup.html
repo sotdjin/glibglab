@@ -73,14 +73,15 @@
 						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" value="{{ request.form.reg_fullname }}">
 					</div>
 					
-					<div class="btn-group">
-					  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    Select
-					  </button>
-					  <div class="dropdown-menu">
-					    <a class="dropdown-item" href="#">Student</a></br>
-					    <a class="dropdown-item" href="#">Teacher</a>
-					</div>
+					<div class="btn-group btn-block">
+					  	<button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    	Select
+					    	<span class="caret"></span></button>
+					  	</button>
+				  		<ul class="dropdown-menu btn-block">
+						    <li><a href="#">Student</a></li>
+						    <li><a href="#">Teacher</a></li>
+					  	</ul>
 					</div>
 					
 					<div class="form-group login-group-checkbox">
