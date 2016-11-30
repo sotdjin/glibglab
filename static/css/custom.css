@@ -28,24 +28,11 @@ ul {
     padding: 0;
 } 
 
-
-.bg {
-  background: url('../images/background.jpg') no-repeat center center;
-  position: fixed;
-  width: 100%;
-  height: 350px; /*same height as jumbotron */
-  top:0;
-  left:0;
-  z-index: -1;
-}
-
-
-.lower {margin: 40% 0 0 0;}
-
 .jumbotron {
-background-image: url("../img/jumbotron_bg.jpg");
-background-size: cover;}
-
+    background-image: url("../images/background.jpg");
+    min-height: 250px;
+    display: block;
+}
 
 body{  background-color: #333;}
 
@@ -87,5 +74,13 @@ li a {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 75%;
+}
+
+#spacertop {
+    padding-bottom: 50px;
+    background-color: #333;
+    z-index: 0;
+    position: relative;
+    /* border: solid red; */
+    box-shadow: 0px 1px 1.5px #888888;
 }
