@@ -75,9 +75,11 @@ def login():
                              User.password == request.form['lg_password']).count():
             found_user = User.query.filter(User.username == request.form['lg_username']).first()
             soi = found_user.soi
+            fullname = found_user.name
             session['username'] = request.form['lg_username']
             session['password'] = request.form['lg_password']
             session['soi'] = soi
+            session['name'] = fullname
             if session['soi'] == 'option1':
                 return redirect(url_for('classview'))
             else:
@@ -103,15 +105,18 @@ def reset():
 @app.route('/teacher', methods=['GET', 'POST'])
 def teacher():
     error = None
+    current_courses = Course.query.filter(Course.course_instructor == session['username']).all()
     if request.method == 'POST':
         _coursename = request.form['course_name']
         _courseinstructor = request.form['course_instructor']
-        _coursecolor = request.form.get('colors', None)
-        print _coursename
-        print _courseinstructor
+        _instructorname = User.query.filter(_courseinstructor)
+        if (Course.query.filter(Course.course_name == _coursename, Course.course_instructor == _courseinstructor).count()) == 0:
+            new_course = Course(_courseinstructor.lower(), _coursename.lower())
+            db.session.add(new_course)
+            db.session.commit()
     return render_template('TeacherView.html', error=error)
 
-@app.route('/notes', methods=['GET', 'POST'])
+@app.route('/questions', methods=['GET', 'POST'])
 def notesview():
     error = None
     return render_template('NotesView.html', error=error)

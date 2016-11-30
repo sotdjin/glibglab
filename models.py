@@ -46,13 +46,13 @@ class Course(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     course_instructor = db.Column(db.Text, unique=False)
+    instructor_name = db.Column(db.Text, unique=False)
     course_name = db.Column(db.Text, unique=False)
-    course_color = db.Column(db.Text, unique=False)
     
-    def __init__(self, course_instructor, course_name, course_color):
+    def __init__(self, course_instructor, instructor_name, course_name):
         self.course_instructor = course_instructor
+        self.instructor_name = instructor_name
         self.course_name = course_name
-        self.course_color = course_color
         
     def __repr__(self):
         return '<Course %r>' % self.course_name
