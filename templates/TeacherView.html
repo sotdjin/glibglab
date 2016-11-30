@@ -49,8 +49,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </div>
@@ -59,11 +58,12 @@
         <!-- Page Content -->
 <div id="page-content-wrapper">
 <div class="container-fluid">
-
-            	{% if error %}
-            	    <p class="error"><strong>Error:</strong> {{ error }}
-              	{% endif %}
-
+<div style="text-align:center">
+    {% if error %}
+    	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+    {% endif %}
+</div>
+    
 <div class="row">
     <div class="col-sm-12">
         <div class="bd-example">
@@ -137,8 +137,6 @@
         <button type="button" class="btn btn-secondary new-class-button" data-toggle="modal" data-target="#myModal" style="">Add Class...</button>
         
    <!-- </div>-->
-</div>
-
 </div>  <!-- End container-fluid -->
 </div>  <!-- End page-content-wrapper -->
         
