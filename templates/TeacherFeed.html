@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Instructor Questions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="../static/js/jquery/dist/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Our CSS -->
+    <link href="../static/css/content.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body style="background-color:#161616">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-brand" href="#"><img alt="GlibGlab" src="../static/images/Glogowhite.png" height="100%"></img></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{{ url_for('logout') }}">Sign Out <span class="glyphicon glyphicon-log-out"></span></a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+        <!-- Page Content -->
+<div id="page-content-wrapper">
+<div class="container-fluid" id="class-view">
+<div style="text-align:center">
+    {% if error %}
+    	<p class="error" style="#ffffff"><strong>Error:</strong> {{ error }} </p>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <center>
+        
+            <label><H2><font color="white"> Questions </font></H2></label>
+
+        </center>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="container-fluid" id="question_list">
+            
+        </div>
+    </div>
+</div> 
+
+</div>  <!-- End container-fluid -->
+</div>  <!-- End page-content-wrapper -->
+        
+<script>
+    var numQuestion = 0;
+    var timeInterval = Math.random() * 10000 + 5000;
+    
+    setInterval(
+    function(){ addQuestion("what") },
+    timeInterval
+    );
+    
+    function addQuestion(text) {
+        var question = document.createElement("div");
+        //var newQuestion = document.getElementById('newQuestion').value;
+        question.className = "student-question-div";
+		
+		question.innerHTML = "DICKBUTT";
+        if(numQuestion==0){
+            question.innerHTML = "What is the meaning of the word hypothermia?";
+        }
+         if(numQuestion==1){
+            question.innerHTML = "How many ducks does it take to lift a truck?";
+        }
+         if(numQuestion==2){
+            question.innerHTML = "How many lines of coke does it take to kill a person?";
+        }
+         if(numQuestion==3){
+            question.innerHTML = "Why isn't physics a sport?";
+        }
+         if(numQuestion==4){
+            question.innerHTML = "Why don't half of the students have test grades yet?";
+        }
+        
+        
+        $("#question_list").prepend(question);
+        timeInterval = Math.random() * 10000 + 5000;
+        numQuestion++;
+    }
+
+
+    window.onload = function() {
+        setClassParameters();
+    };
+
+    function setClassParameters() {
+        var className = localStorage.getItem('ClassName');
+        var instructorName = localStorage.getItem('InstructorName');
+        var colorName = localStorage.getItem('ColorName');
+        console.log(className);
+        console.log(instructorName);
+        console.log(colorName);
+    }
+</script>
+
+</body>
+
+</html>
