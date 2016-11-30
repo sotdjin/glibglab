@@ -8,10 +8,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from sqlalchemy import Column, Integer, Text
 
+from flask.ext.heroku import Heroku
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://ggadmin:admin@localhost/glibglab"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+heroku = Heroku(app)
 db = SQLAlchemy(app)
 
 from models import User, Course, Question
