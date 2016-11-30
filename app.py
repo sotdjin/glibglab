@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ggadmin:admin@localhost/gl
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from models import User, Instructor, Question
+from models import User, Question
 
 db.create_all()
 
@@ -40,19 +40,18 @@ def signup():
         if db.session.query(User).filter(User.username == _username).scalar() is None:
             if _password == _password_confirm:
                 if _agree == 'agree1':
-                    if _soi == 'option1':
-                        new_user = User(_username, _password, _email, _fullname)
-                    elif _soi == 'option2':
-                        new_users = Intrusctor
-                    db.session.add(new_user)
-                    db.session.commit()
+                    new_user = User(_username, _password, _email, _fullname, _soi)
                     session['username'] = _username
                     session['password'] = _password
                     session['email'] = _email
                     session['soi'] = _soi
-                    if session['soi'] == ['option1']:
+                    if session['soi'] == 'option1':
+                        db.session.add(new_user)
+                        db.session.commit()
                         return redirect(url_for('classview'))
-                    elif session['soi'] == ['option2']:
+                    elif session['soi'] == 'option2':
+                        db.session.add(new_user)
+                        db.session.commit()
                         return redirect(url_for('teacher'))
                     else:
                         error = "Must choose a role."
@@ -71,9 +70,16 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    soi = 0
     if request.method == 'POST':
         if User.query.filter(User.username == request.form['username'], 
                              User.password == request.form['password']).count():
+            soi = User
+        elif Instructor.query.filter(Instructor.username == request.form['username'],
+                                     Instructor.password == request.form['password']).count():
+            soi = Instructor
+        else
+        if 
             found_user = User.query.filter(User.username == request.form['username']).first()
             soi = found_user.soi
             session['username'] = request.form['username']
