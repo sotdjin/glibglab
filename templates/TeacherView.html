@@ -192,13 +192,27 @@
             $('#myModal').modal('hide');
             console.log(newClassColor);
             node.style.backgroundColor = newClassColor;
-            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='location.href=" + '"NotesView.html"' + "'><div class='class-notes glyphicon glyphicon-forward'></div></div>";            //node.innerHTML = "<div class='panel panel-default' style='background-color: " + newClassColor + "'><div class='class-info'>" + newClass + "<br>" + newInstructor + "</div></div>";
+            
+            node.innerHTML = "<div class='class-name'><p style='font-size:32px'>" + newClass + "</p><p style='font-size:20px'>" + newInstructor + "</p></div><div class='class-notes-div' onclick='loadQuestionView(" + '"' + newClass + '", "' + newInstructor + '", "' + newClassColor + '"' + ")'><div class='class-notes glyphicon glyphicon-forward'></div></div>";            //node.innerHTML = "<div class='panel panel-default' style='background-color: " + newClassColor + "'><div class='class-info'>" + newClass + "<br>" + newInstructor + "</div></div>";
             //node.innerHTML = "<div class='class-container' style='background-color: " + newClassColor + "'><div class='class-info'>" + newClass + "<br>" + newInstructor + "</div></div>" ;
             //node.innerHTML = "<div class='well well-l'><div style='background: #f33f5d'>" + newClass + "<br>" + newInstructor + "</div></div>";
             //node.className = newClass + "_data";    
             $("#class_list").append(node);
         }
     }   
+    
+    function loadQuestionView(newClass, newInstructor, newColor) {
+        
+        console.log(newClass);
+        console.log(newInstructor);
+        console.log(newColor);
+        localStorage.setItem('ClassName', newClass);
+        localStorage.setItem('InstructorName', newInstructor);
+        localStorage.setItem('ColorName', newColor);
+        
+        window.location.href = "NotesView.html";
+        
+    }
 
 
 </script>
