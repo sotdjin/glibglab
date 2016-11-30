@@ -80,21 +80,11 @@
     <font color="white">
         <label for="class-list">Select Instructor</label>
         <select class="form-control" id='instructor-list'>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
         </select>
     </div>
     <div class="col-xs-6">
         <label for="class-list">Select Class</label>
         <select class="form-control" id='class-list'>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
         </select>
     </font>
     </div>
@@ -104,6 +94,12 @@
 
 
 <script>
+    $(document).ready(function() {
+        {% for course in current_courses %}
+            enumerateInstructor('{{ course.instructor_name }}');
+            enumerateClass('{{ course.course_name }}');
+        {% endfor %} 
+    });
 
     function enumerateInstructor(instructorName) {                            //for every instructor call this function
          var newOption = document.createElement("option");
