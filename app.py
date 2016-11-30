@@ -9,7 +9,7 @@ from sqlalchemy import Column, Integer, Text
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ggadmin:admin@localhost/glibglab"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://ggadmin:admin@localhost/glibglab"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 

@@ -1,5 +1,5 @@
 from app import db
-from sqlalchemy.dialects.postgresql import JSON, ARRAY
+from sqlalchemy.dialects.postgresql import JSON
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -10,7 +10,6 @@ class User(db.Model):
     email = db.Column(db.Text, unique=True)
     name = db.Column(db.Text, unique=False)
     soi = db.Column(db.Text, unique=False)
-    courses = db.Column(ARRAY(db.Text), unique=False)
     
     def __init__(self, username, password, email, name, soi):
         self.username = username
