@@ -65,6 +65,25 @@
     {% endif %}
 </div>
 
+<div class="row">
+    <div class="col-xs-4">
+    <font color="white">
+        <select class="form-control" id='instructor-list'>
+            <option>dickbutt</option>
+        </select>
+        <label for="class-list">Select Instructor</label>
+    </div>
+    <div class="col-xs-4">
+        <select class="form-control" id='class-list'>
+            <option>holy dickballs</option>
+        </select>
+        <label for="class-list">Select Class</label>
+    </font>
+    </div>
+    <div class="col-xs-4">
+        <button class="btn btn-secondary" onclick="addClass()">Add Class</button>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-xs-12">
@@ -74,26 +93,12 @@
     </div>
 </div> 
 
-   
-<div class="row">
-    <div class="col-xs-6">
-    <font color="white">
-        <label for="class-list">Select Instructor</label>
-        <select class="form-control" id='instructor-list'>
-        </select>
-    </div>
-    <div class="col-xs-6">
-        <label for="class-list">Select Class</label>
-        <select class="form-control" id='class-list'>
-        </select>
-    </font>
-    </div>
-</div>
 </div>  <!-- End container-fluid -->
 </div>  <!-- End page-content-wrapper -->
 
 
 <script>
+
     $(document).ready(function() {
         {% for course in current_courses %}
             enumerateInstructor('{{ course.instructor_name }}');
@@ -113,6 +118,7 @@
          newOption.innerHTML = className;
          $("#class-list").append(newOption);
     }
+    
     function addDBClass(newClass, newInstructor) {
         var node = document.createElement("div");
         node.className = "class-container";
@@ -123,10 +129,11 @@
     
     function addClass() {
         var node = document.createElement("div");
-
-        var newClass = document.getElementById('add-class-name').value;
-        var newInstructor = document.getElementById('add-class-instructor').value;
-        
+    
+        var newClass = document.getElementById('class-list').value;
+        var newInstructor = document.getElementById('instructor-list').value;
+        console.log(newClass);
+        console.log(newInstructor);
 
         if (newInstructor != "" && newClass != "") {
             node.className = "class-container";
