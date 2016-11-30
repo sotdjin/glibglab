@@ -107,11 +107,6 @@ def teacher():
     error = None
     return render_template('TeacherView.html', error=error)
 
-@app.route('/class')
-def classview():
-    error = None
-    return render_template('ClassView.html', error=error)
-    
 @app.route('/notes')
 def notesview():
     error = None
