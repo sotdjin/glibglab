@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ggadmin:admin@localhost/gl
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from models import User, Question
+from models import User, Course, Question
 
 db.create_all()
 
