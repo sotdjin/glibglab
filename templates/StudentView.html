@@ -77,36 +77,46 @@
    
 <div class="row">
     <div class="col-xs-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Instructors
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="instructorDropdown">
-            <li role="presentation"><a role="menuitem" href="#">DickButt Moore</a></li>
-            <li role="presentation"><a role="menuitem" href="#">DickButt Cassandra</a></li>
-            <li role="presentation"><a role="menuitem" href="#">DickButt Braden</a></li>
-            <li role="presentation"><a role="menuitem" href="#">The DickButt</a></li>
-            </ul>
-        </div>
+    <font color="white">
+        <label for="class-list">Select Instructor</label>
+        <select class="form-control" id='instructor-list'>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
     </div>
     <div class="col-xs-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Classes
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation"><a role="menuitem" href="#">CSCE 436</a></li>
-            <li role="presentation"><a role="menuitem" href="#">CSCE 443</a></li>
-            <li role="presentation"><a role="menuitem" href="#">CSCE 435</a></li>
-            <li role="presentation"><a role="menuitem" href="#">ANTH 205</a></li>
-            </ul>
-        </div>
+        <label for="class-list">Select Class</label>
+        <select class="form-control" id='class-list'>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+    </font>
     </div>
 </div>
-
 </div>  <!-- End container-fluid -->
 </div>  <!-- End page-content-wrapper -->
 
 
 <script>
+
+    function enumerateInstructor(instructorName) {                            //for every instructor call this function
+         var newOption = document.createElement("option");
+         newOption.innerHTML = instructorName;
+         $("#instructor-list").append(newOption);
+    }
+    
+    function enumerateClass(className) {                        //for every class call this function.
+
+         var newOption = document.createElement("option");
+         newOption.innerHTML = className;
+         $("#class-list").append(newOption);
+    }
 
     function addClass() {
         var node = document.createElement("div");
