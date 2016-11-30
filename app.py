@@ -1,16 +1,19 @@
+#from __future__ import print_function
 import os
 import re
+import sys
 from flask import Flask, render_template, redirect, request, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from sqlalchemy import Column, Integer, Text
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ggadmin:admin@localhost/glibglab"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from models import User
+from models import User, Instructor, Question
 
 db.create_all()
 
@@ -26,17 +29,21 @@ def index():
 def signup():
     error = None
     if request.method == 'POST':
-        _username = request.form['username']
-        _password = request.form['password']
-        _password_confirm = request.form['password_confirm']
-        _email = request.form['email']
-        _fullname = request.form['fullname']
-        _soi = request.form['soi']
-        _agree = request.form['agree']
+        _username = request.form['reg_username']
+        _password = request.form['reg_password']
+        _password_confirm = request.form['reg_password_confirm']
+        _email = request.form['reg_email']
+        _fullname = request.form['reg_fullname']
+        _soi = request.form.get('reg_gender', None)
+        print _soi
+        _agree = request.form.get('reg_agree', 'agree2')
         if db.session.query(User).filter(User.username == _username).scalar() is None:
             if _password == _password_confirm:
-                if _agree == ['agree1']:
-                    new_user = User(_username, _password, _email, _fullname, _soi)
+                if _agree == 'agree1':
+                    if _soi == 'option1':
+                        new_user = User(_username, _password, _email, _fullname)
+                    elif _soi == 'option2':
+                        new_users = Intrusctor
                     db.session.add(new_user)
                     db.session.commit()
                     session['username'] = _username
@@ -45,8 +52,11 @@ def signup():
                     session['soi'] = _soi
                     if session['soi'] == ['option1']:
                         return redirect(url_for('classview'))
-                    else:
+                    elif session['soi'] == ['option2']:
                         return redirect(url_for('teacher'))
+                    else:
+                        error = "Must choose a role."
+                        return render_template('signup.html', error=error) 
                 else:
                     error = "Must agree with terms."
                     return render_template('signup.html', error=error)
@@ -100,6 +110,11 @@ def teacher():
 def classview():
     error = None
     return render_template('ClassView.html', error=error)
+    
+@app.route('/notes')
+def notesview():
+    error = None
+    return render_template('NotesView.html', error=error)
     
 @app.route('/logout')
 def logout():
