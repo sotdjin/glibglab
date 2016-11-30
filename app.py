@@ -40,16 +40,17 @@ def signup():
         if db.session.query(User).filter(User.username == _username).scalar() is None:
             if _password == _password_confirm:
                 if _agree == 'agree1':
-                    new_user = User(_username, _password, _email, _fullname, _soi)
                     session['username'] = _username
                     session['password'] = _password
                     session['email'] = _email
                     session['soi'] = _soi
                     if session['soi'] == 'option1':
+                        new_user = User(_username, _password, _email, _fullname, _soi)
                         db.session.add(new_user)
                         db.session.commit()
                         return redirect(url_for('classview'))
                     elif session['soi'] == 'option2':
+                        new_user = User(_username, _password, _email, _fullname, _soi)
                         db.session.add(new_user)
                         db.session.commit()
                         return redirect(url_for('teacher'))
@@ -74,12 +75,6 @@ def login():
     if request.method == 'POST':
         if User.query.filter(User.username == request.form['username'], 
                              User.password == request.form['password']).count():
-            soi = User
-        elif Instructor.query.filter(Instructor.username == request.form['username'],
-                                     Instructor.password == request.form['password']).count():
-            soi = Instructor
-        else
-        if 
             found_user = User.query.filter(User.username == request.form['username']).first()
             soi = found_user.soi
             session['username'] = request.form['username']

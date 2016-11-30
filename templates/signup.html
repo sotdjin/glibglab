@@ -23,6 +23,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- jQuery -->
+    <script src="../static/js/jquery/dist/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+	</script>
 
 </head>
 
@@ -73,15 +87,12 @@
 						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" value="{{ request.form.reg_fullname }}">
 					</div>
 					
-					<div class="btn-group btn-block">
-					  	<button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    	Select
-					    	<span class="caret"></span></button>
-					  	</button>
-				  		<ul class="dropdown-menu btn-block">
-						    <li><a href="#">Student</a></li>
-						    <li><a href="#">Teacher</a></li>
-					  	</ul>
+					<div class="form-group login-group-checkbox">
+						<input type="radio" class="" name="reg_gender" id="male" placeholder="type" value="option1">
+						<label for="student">student</label>
+						
+						<input type="radio" class="" name="reg_gender" id="female" placeholder="type" value="option2">
+						<label for="instructor">instructor</label>
 					</div>
 					
 					<div class="form-group login-group-checkbox">
@@ -109,21 +120,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../static/js/jquery/dist/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../static/js/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-
 </body>
 
 </html>

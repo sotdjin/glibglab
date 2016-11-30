@@ -10,7 +10,6 @@ class User(db.Model):
     email = db.Column(db.Text, unique=True)
     name = db.Column(db.Text, unique=False)
     soi = db.Column(db.Text, unique=False)
-    questions = db.relationship('Question', backref='users', lazy='dynamic')
     
     def __init__(self, username, password, email, name, soi):
         self.username = username
@@ -26,14 +25,15 @@ class Question(db.Model):
     __tablename__ = 'questions'
     
     id = db.Column(db.Integer, primary_key=True)
-    question_owner = db.Column(db.Text, db.ForeignKey('users.username'))
-    question_instructor = db.Column(db.Text, db.ForeignKey('users.username'))
+    question_owner = db.Column(db.Text, unique=False)
+    question_instructor = db.Column(db.Text, unique=False)
     question = db.Column(db.Text, unique=False)
     read = db.Column(db.Boolean, unique=False, default=False)
     notes = db.Column(db.Text, unique=False, default="")
     
-    def __init__(self, question_owner, question, read):
+    def __init__(self, question_owner, question_instructor, question, read):
         self.question_owner = question_owner
+        self.question_instructor = question_instructor
         self.question = question
         self.read = read
     
